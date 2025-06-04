@@ -1,4 +1,6 @@
 import { useEffect } from "react"; 
+import { HamburgerIcon } from './HamburgerIcon';
+import { MobileMenu } from './MobileMenu';
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
