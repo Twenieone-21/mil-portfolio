@@ -1,26 +1,50 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { useState, useEffect } from 'react';
+
 export const Home = () => {
   const [stars, setStars] = useState([]);
+
   useEffect(() => {
     const generateStars = () => {
-      const newStars = [...Array(50)].map((_, i) => ({
-        id: Math.random(),
+      const newStars = [...Array(100)].map((_, i) => ({ 
+        id: `star-${i}-${Date.now()}`, 
         left: Math.random() * 100,
         top: Math.random() * 100,
         size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.8 + 0.2,
-        duration: Math.random() * 3 + 2
+        opacity: Math.random() * 0.8 + 0.3, 
+        duration: Math.random() * 3 + 2,
+        delay: Math.random() * 2 
       }));
       setStars(newStars);
     };
+
     generateStars();
-    const interval = setInterval(generateStars, 4000);
+  
+    const interval = setInterval(generateStars, 6000); 
+    
     return () => clearInterval(interval);
   }, []);
+
   return (
     <div className="relative overflow-hidden">
       <div className="fixed inset-0 w-full h-full bg-black z-0">
+       
+        <div className="absolute inset-0 opacity-60">
+          {[...Array(80)].map((_, i) => (
+            <div
+              key={`static-star-${i}`}
+              className="absolute bg-white rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${Math.random() * 2 + 1}px`,
+                height: `${Math.random() * 2 + 1}px`,
+                opacity: Math.random() * 0.6 + 0.2,
+              }}
+            />
+          ))}
+        </div>
+        
         <div className="absolute inset-0">
           {stars.map((star) => (
             <div
@@ -32,7 +56,8 @@ export const Home = () => {
                 width: `${star.size}px`,
                 height: `${star.size}px`,
                 opacity: star.opacity,
-                animationDuration: `${star.duration}s`
+                animationDuration: `${star.duration}s`,
+                animationDelay: `${star.delay}s`
               }}
             />
           ))}
@@ -47,37 +72,38 @@ export const Home = () => {
         <div className="absolute bottom-1/4 left-1/6 w-88 h-88 bg-indigo-500/8 rounded-full blur-3xl animate-pulse" 
              style={{animationDelay: '4s'}}></div>
       </div>
+
       <section
         id="home"
         className="min-h-screen flex items-center justify-center relative z-10"
       >
-      <RevealOnScroll>
-        <div className="text-center z-10 px-4">
-          <h1 className="text-5xl md:text-7x1 font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center">
-            Hi, I'm Camille
-          </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-          As a first-year student, my goal is to provide 
-          excellent work and learn how to become a front-end
-          developer someday.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <a
-              href="#projects"
-              className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)]"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 
-             hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10"
-            >
-              Contact Me  
-            </a>
+        <RevealOnScroll>
+          <div className="text-center z-10 px-4">
+            <h1 className="text-5xl md:text-7x1 font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-center">
+              Hi, I'm Camille
+            </h1>
+            <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
+              As a first-year student, my goal is to provide 
+              excellent work and learn how to become a front-end
+              developer someday.
+            </p>
+            <div className="flex justify-center space-x-4">
+              <a
+                href="#projects"
+                className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)]"
+              >
+                View Projects
+              </a>
+              <a
+                href="#contact"
+                className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 
+               hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10"
+              >
+                Contact Me  
+              </a>
+            </div>
           </div>
-        </div>
-      </RevealOnScroll>
+        </RevealOnScroll>
       </section>
     </div>
   );
