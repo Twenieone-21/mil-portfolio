@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss(),],
-  base: "/camille-portfolio",
+  base: "/camillecstn21-portfolio",
   css: {
     postcss: './postcss.config.js'
   }
