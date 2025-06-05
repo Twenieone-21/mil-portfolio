@@ -70,7 +70,6 @@ export const Home = () => {
         <div className="absolute bottom-1/4 left-1/6 w-88 h-88 bg-indigo-500/8 rounded-full blur-3xl animate-pulse" 
              style={{animationDelay: '4s'}}></div>
       </div>
-
       <section
         id="home"
         className="min-h-screen flex items-center justify-center relative z-10"
