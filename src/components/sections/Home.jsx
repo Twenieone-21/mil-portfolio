@@ -6,29 +6,26 @@ export const Home = () => {
 
   useEffect(() => {
     const generateStars = () => {
-      const newStars = [...Array(100)].map((_, i) => ({ 
-        id: `star-${i}-${Date.now()}`, 
+      const newStars = [...Array(100)].map((_, i) => ({
+        id: `star-${i}-${Date.now()}`,
         left: Math.random() * 100,
         top: Math.random() * 100,
         size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.8 + 0.3, 
+        opacity: Math.random() * 0.8 + 0.3,
         duration: Math.random() * 3 + 2,
-        delay: Math.random() * 2 
+        delay: Math.random() * 2
       }));
       setStars(newStars);
     };
 
     generateStars();
-  
-    const interval = setInterval(generateStars, 6000); 
-    
+    const interval = setInterval(generateStars, 6000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="relative overflow-hidden">
       <div className="fixed inset-0 w-full h-full bg-black z-0">
-       
         <div className="absolute inset-0 opacity-60">
           {[...Array(80)].map((_, i) => (
             <div
@@ -62,6 +59,7 @@ export const Home = () => {
             />
           ))}
         </div>
+
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" 
              style={{animationDelay: '1s'}}></div>
