@@ -1,7 +1,10 @@
 import { useEffect } from "react"; 
 import { HamburgerIcon } from './HamburgerIcon';
 import { MobileMenu } from './MobileMenu';
+
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
+  console.log("🔍 Navbar rendered - menuOpen:", menuOpen);
+  
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
@@ -12,10 +15,13 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           <a href="#home" className="font-mono text-xl font-bold text-white">
             cam<span className="text-blue-500">.mil</span>
           </a>
-          <HamburgerIcon 
-            isOpen={menuOpen} 
-            onClick={() => setMenuOpen((prev) => !prev)} 
-          />
+          
+          <div className="md:hidden" style={{backgroundColor: 'red', padding: '10px'}}> 
+            <HamburgerIcon 
+              isOpen={menuOpen} 
+              onClick={() => setMenuOpen((prev) => !prev)} 
+            />
+          </div>
 
           <div className="hidden md:flex items-center space-x-8">
             <a href="#home" className="text-gray-300 hover:text-white transition-colors">
