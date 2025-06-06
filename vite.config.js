@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(),],
-  base: "/camillecstn21-portfolio",
-  css: {
-    postcss: './postcss.config.js'
-  }
+  plugins: [react()],
+  // Use "/" if deploying to root on Vercel
+  base: "/",
+  // PostCSS config usually auto-detected; can omit this
+  // css: {
+  //   postcss: './postcss.config.js'
+  // }
 })
